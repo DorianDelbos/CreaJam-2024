@@ -6,21 +6,6 @@ using UnityEngine.UIElements.Experimental;
 
 public class FadeSystem : MonoBehaviour
 {
-    private static FadeSystem _i;
-    public static FadeSystem instance
-    {
-        get
-        {
-            if (_i == null)
-            {
-                _i = Instantiate(Resources.Load("FadeSystem") as GameObject).GetComponent<FadeSystem>();
-                DontDestroyOnLoad(_i.gameObject);
-            }
-
-            return _i;
-        }
-    }
-
     [SerializeField] private Image fade;
     [SerializeField] private float timer = 1.0f;
     private Coroutine fadeRoutine;

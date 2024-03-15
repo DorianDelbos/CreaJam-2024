@@ -3,14 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MenuHandler
 {
+    private FadeSystem fadeSystem;
+
     private void Start()
     {
-        FadeSystem.instance.ToggleFade(false);
+        fadeSystem = FindObjectOfType<FadeSystem>();
+        fadeSystem.ToggleFade(false);
     }
 
     public void StartGame()
     {
-        FadeSystem.instance.ToggleFade(true, () => SceneManager.LoadScene("Trauma1"));
+        fadeSystem.ToggleFade(true, () => SceneManager.LoadScene("Trauma1"));
     }
 
     public void QuitGame()
