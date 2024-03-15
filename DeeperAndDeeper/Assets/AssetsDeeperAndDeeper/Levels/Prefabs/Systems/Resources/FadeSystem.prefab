@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5137011329470073301}
   - component: {fileID: 8449541427350252404}
-  - component: {fileID: 3499312587019717812}
   m_Layer: 0
   m_Name: FadeSystem
   m_TagString: Untagged
@@ -46,28 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8507ce08a8799634d8c8735ee63a5b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fade: {fileID: 0}
---- !u!95 &3499312587019717812
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131502157528137282}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b9867c0feae437479a20ab18d496dfc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  fade: {fileID: 3249482727915372828}
+  timer: 1
 --- !u!1 &4136627404220918865
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +58,6 @@ GameObject:
   - component: {fileID: 4529049319603483883}
   - component: {fileID: 8224502199161368057}
   - component: {fileID: 5326687325823886897}
-  - component: {fileID: 8303601781256473516}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -153,23 +131,6 @@ MonoBehaviour:
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
   m_PresetInfoIsWorld: 0
---- !u!114 &8303601781256473516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4136627404220918865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!1 &4225842218820546419
 GameObject:
   m_ObjectHideFlags: 0
