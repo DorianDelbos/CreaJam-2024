@@ -638,6 +638,13 @@ MonoBehaviour:
   lights:
   - {fileID: 8103982144993654174}
   - {fileID: 7811888018180907143}
+  hornRef:
+    Guid:
+      Data1: 641265382
+      Data2: 1187039134
+      Data3: -735586122
+      Data4: 551507146
+    Path: event:/Horn
 --- !u!1 &1301496875740176207
 GameObject:
   m_ObjectHideFlags: 0

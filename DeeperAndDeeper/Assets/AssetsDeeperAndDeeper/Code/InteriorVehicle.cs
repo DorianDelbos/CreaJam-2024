@@ -26,9 +26,26 @@ public class InteriorVehicle : MonoBehaviour
     private Coroutine WipperRightRoutine;
     private Coroutine CrankLightRoutine;
 
+    [SerializeField] private FMODUnity.EventReference hornRef;
+    private FMOD.Studio.EventInstance hornInstance;
+    [SerializeField] private FMODUnity.EventReference lightRef;
+    private FMOD.Studio.EventInstance lightInstance;
+    [SerializeField] private FMODUnity.EventReference gloveBoxRef;
+    private FMOD.Studio.EventInstance gloveBoxInstance;
+    [SerializeField] private FMODUnity.EventReference wiperRef;
+    private FMOD.Studio.EventInstance wiperInstance;
+
+    private void Start()
+    {
+        hornInstance = FMODUnity.RuntimeManager.CreateInstance(hornRef);
+        lightInstance = FMODUnity.RuntimeManager.CreateInstance(lightRef);
+        gloveBoxInstance = FMODUnity.RuntimeManager.CreateInstance(gloveBoxRef);
+        wiperInstance = FMODUnity.RuntimeManager.CreateInstance(wiperRef);
+    }
+
     public void ToggleSteering()
     {
-        // Klaxon
+        hornInstance.start();
     }
 
     public void ToggleLight()
@@ -43,6 +60,8 @@ public class InteriorVehicle : MonoBehaviour
             {
                 light.enabled = false;
             }
+
+            lightInstance.setParameterByName("isOn", 0);
         }
         else
         {
@@ -54,8 +73,11 @@ public class InteriorVehicle : MonoBehaviour
             {
                 light.enabled = true;
             }
+
+            lightInstance.setParameterByName("isOn", 1);
         }
 
+        lightInstance.start();
         crankLightActive = !crankLightActive;
     }
 
@@ -73,6 +95,8 @@ public class InteriorVehicle : MonoBehaviour
                 StopCoroutine(sunScreenLeftRoutine);
             sunScreenLeftRoutine = StartCoroutine(LerpFromTo(SunScreenLeft, SunScreenLeft.localEulerAngles, Vector3.zero));
         }
+
+        gloveBoxInstance.start();
 
         sunScreenLeftActive = !sunScreenLeftActive;
     }
@@ -92,6 +116,8 @@ public class InteriorVehicle : MonoBehaviour
             sunScreenRightRoutine = StartCoroutine(LerpFromTo(SunScreenRight, SunScreenRight.localEulerAngles, Vector3.zero));
         }
 
+        gloveBoxInstance.start();
+
         sunScreenRightActive = !sunScreenRightActive;
     }
 
@@ -110,6 +136,8 @@ public class InteriorVehicle : MonoBehaviour
             GloveBoxRoutine = StartCoroutine(LerpFromTo(GloveBox, GloveBox.localEulerAngles, Vector3.zero));
         }
 
+        gloveBoxInstance.start();
+
         gloveBoxActive = !gloveBoxActive;
     }
 
@@ -126,15 +154,25 @@ public class InteriorVehicle : MonoBehaviour
             CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(0f, 0f, -16f), 0.2f));
             WipperLeftRoutine = StartCoroutine(LerpFromTo(WipperLeft, WipperLeft.localEulerAngles, new Vector3(25f, 0f, -10f)));
             WipperRightRoutine = StartCoroutine(LerpFromTo(WipperRight, WipperRight.localEulerAngles, new Vector3(25f, 0f, -10f)));
+
+            wiperInstance.setParameterByName("isOn", 0);
         }
         else
         {
             if (CrankWipperRoutine != null)
                 StopCoroutine(CrankWipperRoutine);
+            if (WipperLeftRoutine != null)
+                StopCoroutine(WipperLeftRoutine);
+            if (WipperRightRoutine != null)
+                StopCoroutine(WipperRightRoutine);
             CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(0f, 0f, 0f), 0.2f));
             WipperLeftRoutine = StartCoroutine(LerpFromTo(WipperLeft, WipperLeft.localEulerAngles, new Vector3(25f, 0f, -85f)));
             WipperRightRoutine = StartCoroutine(LerpFromTo(WipperRight, WipperRight.localEulerAngles, new Vector3(25f, 0f, -85f)));
+
+            wiperInstance.setParameterByName("isOn", 1);
         }
+
+        wiperInstance.start();
 
         crankWipperActive = !crankWipperActive;
     }
