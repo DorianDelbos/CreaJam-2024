@@ -33,11 +33,11 @@ public class InteriorVehicle : MonoBehaviour
 
     public void ToggleLight()
     {
-        if (crankLightActive)
+        if (!crankLightActive)
         {
             if (CrankLightRoutine != null)
                 StopCoroutine(CrankLightRoutine);
-            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.eulerAngles, new Vector3(-4.209f, -169.079f, 80f)));
+            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.localEulerAngles, new Vector3(-4.209f, -154.08f, 95.334f)));
 
             foreach (var light in lights)
             {
@@ -48,7 +48,7 @@ public class InteriorVehicle : MonoBehaviour
         {
             if (CrankLightRoutine != null)
                 StopCoroutine(CrankLightRoutine);
-            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.eulerAngles, new Vector3(-4.209f, -169.079f, 65.334f)));
+            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.localEulerAngles, new Vector3(-4.209f, -169.079f, 95.334f)));
 
             foreach (var light in lights)
             {
@@ -61,17 +61,17 @@ public class InteriorVehicle : MonoBehaviour
 
     public void ToggleSunScreenLeft()
     {
-        if (sunScreenLeftActive)
+        if (!sunScreenLeftActive)
         {
             if (sunScreenLeftRoutine != null)
                 StopCoroutine(sunScreenLeftRoutine);
-            sunScreenLeftRoutine = StartCoroutine(LerpFromTo(SunScreenLeft, SunScreenLeft.eulerAngles, Vector3.right * 100));
+            sunScreenLeftRoutine = StartCoroutine(LerpFromTo(SunScreenLeft, SunScreenLeft.localEulerAngles, Vector3.right * 90));
         }
         else
         {
             if (sunScreenLeftRoutine != null)
                 StopCoroutine(sunScreenLeftRoutine);
-            sunScreenLeftRoutine = StartCoroutine(LerpFromTo(SunScreenLeft, SunScreenLeft.eulerAngles, Vector3.zero));
+            sunScreenLeftRoutine = StartCoroutine(LerpFromTo(SunScreenLeft, SunScreenLeft.localEulerAngles, Vector3.zero));
         }
 
         sunScreenLeftActive = !sunScreenLeftActive;
@@ -79,17 +79,17 @@ public class InteriorVehicle : MonoBehaviour
 
     public void ToggleSunScreenRight()
     {
-        if (sunScreenRightActive)
+        if (!sunScreenRightActive)
         {
             if (sunScreenRightRoutine != null)
                 StopCoroutine(sunScreenRightRoutine);
-            sunScreenRightRoutine = StartCoroutine(LerpFromTo(SunScreenRight, SunScreenRight.eulerAngles, Vector3.right * 100));
+            sunScreenRightRoutine = StartCoroutine(LerpFromTo(SunScreenRight, SunScreenRight.localEulerAngles, Vector3.right * 90));
         }
         else
         {
             if (sunScreenRightRoutine != null)
                 StopCoroutine(sunScreenRightRoutine);
-            sunScreenRightRoutine = StartCoroutine(LerpFromTo(SunScreenRight, SunScreenRight.eulerAngles, Vector3.zero));
+            sunScreenRightRoutine = StartCoroutine(LerpFromTo(SunScreenRight, SunScreenRight.localEulerAngles, Vector3.zero));
         }
 
         sunScreenRightActive = !sunScreenRightActive;
@@ -97,17 +97,17 @@ public class InteriorVehicle : MonoBehaviour
 
     public void ToggleGloveBox()
     {
-        if (gloveBoxActive)
+        if (!gloveBoxActive)
         {
             if (GloveBoxRoutine != null)
                 StopCoroutine(GloveBoxRoutine);
-            GloveBoxRoutine = StartCoroutine(LerpFromTo(GloveBox, GloveBox.eulerAngles, Vector3.right * 100));
+            GloveBoxRoutine = StartCoroutine(LerpFromTo(GloveBox, GloveBox.localEulerAngles, Vector3.right * 90));
         }
         else
         {
             if (GloveBoxRoutine != null)
                 StopCoroutine(GloveBoxRoutine);
-            GloveBoxRoutine = StartCoroutine(LerpFromTo(GloveBox, GloveBox.eulerAngles, Vector3.zero));
+            GloveBoxRoutine = StartCoroutine(LerpFromTo(GloveBox, GloveBox.localEulerAngles, Vector3.zero));
         }
 
         gloveBoxActive = !gloveBoxActive;
@@ -115,11 +115,25 @@ public class InteriorVehicle : MonoBehaviour
 
     public void ToggleWipper()
     {
-        if (crankWipperActive)
+        if (!crankWipperActive)
         {
             if (CrankWipperRoutine != null)
                 StopCoroutine(CrankWipperRoutine);
-            CrankWipperRoutine = StartCoroutine(WipperLerpFromTo(WipperRight, WipperRight.eulerAngles, new Vector3(25f, 0f, 65f)));
+            if (WipperLeftRoutine != null)
+                StopCoroutine(WipperLeftRoutine);
+            if (WipperRightRoutine != null)
+                StopCoroutine(WipperRightRoutine);
+            CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(-4.209f, -9.079f, 65.334f)));
+            WipperLeftRoutine = StartCoroutine(LerpFromTo(WipperLeft, WipperLeft.localEulerAngles, new Vector3(25f, 0f, 0f)));
+            WipperRightRoutine = StartCoroutine(LerpFromTo(WipperRight, WipperRight.localEulerAngles, new Vector3(25f, 0f, 0f)));
+        }
+        else
+        {
+            if (CrankWipperRoutine != null)
+                StopCoroutine(CrankWipperRoutine);
+            CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(-4.209f, -9.079f, 95.334f)));
+            WipperLeftRoutine = StartCoroutine(LerpFromTo(WipperLeft, WipperLeft.localEulerAngles, new Vector3(25f, 0f, -85f)));
+            WipperRightRoutine = StartCoroutine(LerpFromTo(WipperRight, WipperRight.localEulerAngles, new Vector3(25f, 0f, -85f)));
         }
 
         crankWipperActive = !crankWipperActive;
@@ -134,28 +148,6 @@ public class InteriorVehicle : MonoBehaviour
             elapsed = Mathf.Min(elapsed + Time.deltaTime, timer);
             transform.localEulerAngles = Vector3.Lerp(from, to, elapsed / timer);
             yield return null;
-        }
-    }
-
-    private IEnumerator WipperLerpFromTo(Transform transform, Vector3 start, Vector3 end, float timer = 1f)
-    {
-        while (crankWipperActive)
-        {
-            float elapsed = 0.0f;
-
-            while (elapsed < timer)
-            {
-                elapsed = Mathf.Min(elapsed + Time.deltaTime, timer);
-                transform.localEulerAngles = Vector3.Lerp(start, end, elapsed / timer);
-                yield return null;
-            }
-
-            while (elapsed > 0)
-            {
-                elapsed = Mathf.Max(elapsed - Time.deltaTime, 0);
-                transform.localEulerAngles = Vector3.Lerp(end, start, 1 - elapsed / timer);
-                yield return null;
-            }
         }
     }
 }

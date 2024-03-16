@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SunScreenLeft : MonoBehaviour
+public class SunScreenLeft : MonoBehaviour, ISelection
 {
     private bool isHover = false;
     private bool isSelected = false;
