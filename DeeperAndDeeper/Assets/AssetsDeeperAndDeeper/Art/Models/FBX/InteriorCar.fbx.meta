@@ -1,34 +1,9 @@
 fileFormatVersion: 2
-guid: 4ef4e2d258b69864b832085ba2b5d10c
+guid: f12c54f7a0dee6b40a72d7d2068be542
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Armature
-    second: {fileID: 2100000, guid: c78f3af856ff37a4f83a7057682c0b04, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Base
-    second: {fileID: 2100000, guid: c2efb6efd6c725a49bcaa45524102269, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Gear
-    second: {fileID: 2100000, guid: d2e34eb07245cec4d9f5d65eca3ac97d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Light
-    second: {fileID: 2100000, guid: 75cd1bea1df815a43a2e8ad59e89cdca, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Window
-    second: {fileID: 2100000, guid: 9f3ac46e3fe570c418e4f64d6537cadc, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -66,14 +41,14 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
-    importVisibility: 0
+    importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
+    importCameras: 1
     importLights: 1
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
