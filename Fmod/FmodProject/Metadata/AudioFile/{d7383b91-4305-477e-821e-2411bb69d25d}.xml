@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d7383b91-4305-477e-821e-2411bb69d25d}">
+		<property name="assetPath">
+			<value>cap_close.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.1218140589569161</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{39ac2235-c751-4e37-9c1f-f26dca9714e4}</destination>
+		</relationship>
+	</object>
+</objects>

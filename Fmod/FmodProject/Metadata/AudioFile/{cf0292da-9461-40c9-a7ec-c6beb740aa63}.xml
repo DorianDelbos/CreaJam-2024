@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{cf0292da-9461-40c9-a7ec-c6beb740aa63}">
+		<property name="assetPath">
+			<value>essuis_glaces_baissé.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>22.0499992</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.34276643990929706</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{39ac2235-c751-4e37-9c1f-f26dca9714e4}</destination>
+		</relationship>
+	</object>
+</objects>
