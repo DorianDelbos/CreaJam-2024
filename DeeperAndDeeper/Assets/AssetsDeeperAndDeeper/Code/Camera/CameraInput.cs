@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraInput : MonoBehaviour
 {
     PlayerInputMap inputMap;
-    CarCameraController controller;
+    CameraController controller;
 
     private void OnEnable()
     {
@@ -18,7 +18,7 @@ public class CameraInput : MonoBehaviour
     private void Awake()
     {
         inputMap = new PlayerInputMap();
-        controller = GetComponent<CarCameraController>();
+        controller = GetComponent<CameraController>();
     }
     void Start()
     {

@@ -23,12 +23,12 @@ public interface ISelection
         Vector3 direction = camPos - BasePos;
         Vector3 desiredPos = camPos - direction.normalized * OffsetCamera;
         GameManager gm = GameManager.instance;
-        if (gm.GameState == GameManager.State.INGAME || gm.GameState == GameManager.State.SUB_GAME_1)
+        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.SUB_GAME_1)
         {
             SelectUpdateOutline();
             IsHover = false;
         }
-        if ((GameManager.instance.GameState == GameManager.State.INGAME || GameManager.instance.GameState == GameManager.State.SUB_GAME_1) && this == selectedObjet && (go.transform.position != BasePos || go.transform.rotation != BaseRot))
+        if ((GameManager.instance.GameState == GameManager.State.IN_GAME1 || GameManager.instance.GameState == GameManager.State.SUB_GAME_1) && this == selectedObjet && (go.transform.position != BasePos || go.transform.rotation != BaseRot))
         {
             Debug.Log("Back to pos");
             BringBackToPos();
