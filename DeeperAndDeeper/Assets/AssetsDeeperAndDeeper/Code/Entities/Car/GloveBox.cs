@@ -1,32 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class EntitieTest : MonoBehaviour, ISelection
+public class GloveBox : MonoBehaviour, ISelection
 {
-    bool isHover = false;
-    bool isSelected = false;
-    Vector3 basePos;
-    Quaternion baseRot;
-    public float offsetCamera = 0;
+    private bool isHover = false;
+    private bool isSelected = false;
+    private Vector3 basePos;
+    private Quaternion baseRot;
+    float offsetCamera = 0;
     public bool IsHover { get => isHover; set => isHover = value; }
     public bool IsSelected { get => isSelected; set => isSelected = value; }
     public Vector3 BasePos { get => basePos; set => basePos = value; }
     public Quaternion BaseRot { get => baseRot; set => baseRot = value; }
     public float OffsetCamera { get => offsetCamera; set => offsetCamera = value; }
 
-    private void Start()
-    {
-        basePos = this.transform.position;
-        baseRot = this.transform.rotation;
-    }
     public void OnClick()
     {
-        isSelected = true;
-        GameManager.instance.ChangeState(GameManager.State.LOOKING_OBJECT);
-        (this as ISelection).ResetMat();
-        ISelection.selectedObjet = this;
+        InteriorVehicle vehicle = GameObject.FindFirstObjectByType<InteriorVehicle>();
+        vehicle.ToggleGloveBox();
+        this.gameObject.SetActive(false);
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame

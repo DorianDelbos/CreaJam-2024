@@ -6,10 +6,9 @@ using UnityEngine.InputSystem;
 
 public class CarCameraController : MonoBehaviour
 {
-    Vector3 direction = Vector3.zero;
     Vector2 turn = Vector3.zero;
     [SerializeField] float rotationSpeed = 2;
-    [SerializeField] float xMaxRot = 75;
+    [SerializeField] float xMaxRot = 45;
     [SerializeField] float yMaxRot = 20;
 
     // Start is called before the first frame update
@@ -31,10 +30,5 @@ public class CarCameraController : MonoBehaviour
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.2f);
         }
         
-    }
-
-    public void ReadDirection(InputAction.CallbackContext ctx)
-    {
-        direction = ctx.ReadValue<Vector2>();
     }
 }

@@ -5,7 +5,8 @@ public class GameManager : MonoBehaviour
     public enum State
     {
         INGAME,
-        LOOKING_OBJECT
+        LOOKING_OBJECT,
+        SUB_GAME_1
     }
     public static GameManager instance;
     public State GameState { get; private set; } = State.INGAME;

@@ -10,9 +10,9 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         GameManager gm = GameManager.instance;
-        
+
         //----------------IN GAME------------------//
-        if(gm.GameState == GameManager.State.INGAME)
+        if (gm.GameState == GameManager.State.INGAME)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit info))
@@ -39,9 +39,9 @@ public class PlayerInput : MonoBehaviour
             go.transform.rotation = Quaternion.Slerp(go.transform.rotation, targetRotation, 0.2f);
         }
 
-        if(gm.GameState == GameManager.State.LOOKING_OBJECT && Input.GetKeyDown(KeyCode.Escape))
+        if (gm.GameState == GameManager.State.LOOKING_OBJECT && Input.GetKeyDown(KeyCode.Escape))
         {
-                gm.ChangeState(GameManager.State.INGAME);
+            gm.ChangeState(GameManager.State.INGAME);
             ISelection.lerpTime = 0;
         }
     }
