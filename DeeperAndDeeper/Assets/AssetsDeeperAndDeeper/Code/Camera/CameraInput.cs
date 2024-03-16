@@ -9,7 +9,6 @@ public class CameraInput : MonoBehaviour
 
     private void OnEnable()
     {
-        
         inputMap.Enable();
         inputMap.Camera.LookAt.performed += controller.ReadDirection;
         inputMap.Camera.LookAt.canceled += controller.ReadDirection;

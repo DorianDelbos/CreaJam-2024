@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 public interface ISelection
@@ -32,10 +33,11 @@ public interface ISelection
     void SelectUpdateOutline()
     {
         Renderer renderer = (this as MonoBehaviour).GetComponent<MeshRenderer>();
-        List<Material> matList = new List<Material>
+        List<Material> matList = new List<Material>();
+        foreach(var mat in renderer.materials)
         {
-            renderer.material
-        };
+            matList.Add(mat);
+        }
         if (IsHover) matList.Add(outlineMaterial);
         renderer.SetMaterials(matList);
     }
@@ -46,6 +48,7 @@ public interface ISelection
         Vector3 camPos = Camera.main.transform.position;
         Vector3 direction = camPos - BasePos;
         Vector3 desiredPos = camPos - direction.normalized * offsetCameraObject;
+        go.transform.LookAt(Camera.main.transform);
         if (lerpTime < 1)
         {
             go.transform.position = Vector3.Lerp(BasePos, desiredPos, lerpTime);
@@ -72,10 +75,11 @@ public interface ISelection
     public void ResetMat()
     {
         Renderer renderer = (this as MonoBehaviour).GetComponent<MeshRenderer>();
-        List<Material> matList = new List<Material>
+        List<Material> matList = new List<Material>();
+        foreach (var mat in renderer.materials)
         {
-            renderer.material
-        };
+            matList.Add(mat);
+        }
         renderer.SetMaterials(matList);
     }
 }

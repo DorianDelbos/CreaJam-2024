@@ -5,16 +5,13 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     Vector2 turn = Vector2.zero;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         GameManager gm = GameManager.instance;
+        
+        //----------------IN GAME------------------//
         if(gm.GameState == GameManager.State.INGAME)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -31,8 +28,9 @@ public class PlayerInput : MonoBehaviour
                 }
             }
         }
-        
-        if(gm.GameState == GameManager.State.LOOKING_OBJECT && Input.GetMouseButton(0))
+
+        //----------------LOOKING OBJECT------------------//
+        if (gm.GameState == GameManager.State.LOOKING_OBJECT && Input.GetMouseButton(0))
         {
             GameObject go = (ISelection.selectedObjet as MonoBehaviour).gameObject;
             turn.x += Input.GetAxisRaw("Mouse X") * 10;

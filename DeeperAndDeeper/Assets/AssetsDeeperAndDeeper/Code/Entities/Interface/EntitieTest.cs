@@ -37,10 +37,6 @@ public class EntitieTest : MonoBehaviour, ISelection
             (this as ISelection).SelectUpdateOutline();
             isHover = false;
         }
-        else if(isSelected && gm.GameState == GameManager.State.LOOKING_OBJECT)
-        {
-            
-        }
         
     }
 }
