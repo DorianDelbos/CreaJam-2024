@@ -4,12 +4,14 @@ public class GameManager : MonoBehaviour
 {
     public enum State
     {
-        INGAME,
+        IN_GAME1,
         LOOKING_OBJECT,
-        SUB_GAME_1
+        SUB_GAME_1,
+
+        IN_GAME2
     }
     public static GameManager instance;
-    public State GameState { get; private set; } = State.INGAME;
+    public State GameState = State.IN_GAME1;
 
     private void Awake()
     {
