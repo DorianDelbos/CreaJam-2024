@@ -20,7 +20,7 @@ public interface ISelection
         Vector3 direction = camPos - BasePos;
         Vector3 desiredPos = camPos - direction.normalized * OffsetCamera;
         GameManager gm = GameManager.instance;
-        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.SUB_GAME_1)
+        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.SUB_GAME_1 || gm.GameState == GameManager.State.IN_GAME2)
         {
             SelectUpdateOutline();
             IsHover = false;
