@@ -56,6 +56,7 @@ public class PlayerInput : MonoBehaviour
         {
             gm.ChangeState(GameManager.State.IN_GAME1);
             ISelection.lerpTime = 0;
+            ISelection.selectedObjet.OnUnselect();
         }
 
     }

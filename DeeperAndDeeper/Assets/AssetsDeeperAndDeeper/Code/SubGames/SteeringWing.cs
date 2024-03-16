@@ -11,6 +11,8 @@ public class SteeringWing : MonoBehaviour, ISelection
     private bool isSelected = false;
     private Vector3 basePos;
     private Quaternion baseRot;
+
+    [SerializeField] RectTransform arrowImage;
     float offsetCamera = 0;
     public bool IsHover { get => isHover; set => isHover = value; }
     public bool IsSelected { get => isSelected; set => isSelected = value; }
@@ -35,16 +37,20 @@ public class SteeringWing : MonoBehaviour, ISelection
     {
         if(GameManager.instance.GameState == GameManager.State.SUB_GAME_1)
         {
-            if(Input.GetKey(KeyCode.D) && this.transform.rotation.z < 90f)
+            #region Wing & Arrow Rotation
+            if (Input.GetKey(KeyCode.D) && this.transform.rotation.z < 90f)
             {
                 rotationZ += new Vector3(0, 0, 1);
             }
             else if (Input.GetKey(KeyCode.A) && this.transform.rotation.z > -90f)
             {
                 rotationZ -= new Vector3(0, 0, 1);
+                
             }
             rotationZ.z = Mathf.Clamp(rotationZ.z, -90, 90);
             this.transform.localEulerAngles = rotationZ;
+            arrowImage.transform.eulerAngles = -rotationZ;
+            #endregion
         }
         else
         {
