@@ -5,14 +5,21 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     Vector2 turn = Vector2.zero;
-
+    [SerializeField] float speed;
+    CharacterController cc;
+    float xRot = 0;
+    [SerializeField] float rotationSpeed = 0;
+    private void Start()
+    {
+        cc = GetComponent<CharacterController>();
+    }
     // Update is called once per frame
     void Update()
     {
         GameManager gm = GameManager.instance;
 
         //----------------IN GAME------------------//
-        if (gm.GameState == GameManager.State.IN_GAME1)
+        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.IN_GAME2)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit info))
@@ -27,6 +34,12 @@ public class PlayerInput : MonoBehaviour
 
                 }
             }
+        }
+
+        if (gm.GameState == GameManager.State.IN_GAME2)
+        {
+            MovementBehaviour();
+            RotationBehaviour();
         }
 
         //----------------LOOKING OBJECT------------------//
@@ -44,5 +57,40 @@ public class PlayerInput : MonoBehaviour
             gm.ChangeState(GameManager.State.IN_GAME1);
             ISelection.lerpTime = 0;
         }
+        if (gm.GameState == GameManager.State.UNLOCK_DIGIT && Input.GetKeyDown(KeyCode.Escape))
+        {
+            gm.ChangeState(GameManager.State.IN_GAME2);
+            ISelection.lerpTime = 0;
+        }
+    }
+    private void MovementBehaviour()
+    {
+        Vector3 result = Vector3.zero;
+        if (Input.GetKey(KeyCode.W))
+        {
+            result += this.transform.forward * Time.deltaTime * speed;
+            
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            result -= this.transform.forward * Time.deltaTime * speed;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            result += this.transform.right * Time.deltaTime * speed;
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            result -= this.transform.right * Time.deltaTime * speed;
+        }
+        cc.Move(result);
+    }
+
+    private void RotationBehaviour()
+    {
+        xRot += Input.GetAxisRaw("Mouse X") * rotationSpeed;
+        Quaternion targetRotation = Quaternion.Euler(0, xRot, 0.0f);
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.2f);
     }
 }

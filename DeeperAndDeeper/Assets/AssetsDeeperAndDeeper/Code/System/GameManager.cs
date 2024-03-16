@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
         LOOKING_OBJECT,
         SUB_GAME_1,
 
-        IN_GAME2
+        IN_GAME2,
+        UNLOCK_DIGIT
     }
     public static GameManager instance;
     public State GameState = State.IN_GAME1;

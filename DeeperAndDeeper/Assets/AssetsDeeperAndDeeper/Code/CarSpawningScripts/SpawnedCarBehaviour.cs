@@ -4,6 +4,8 @@ public class SpawnedCarBehaviour : MonoBehaviour
 {
     public Rigidbody rb;
     [SerializeField] private float timerToDelete = 5.0f;
+    private float speed = 50f;
+    public float Speed { get; set; }
 
     private void Start()
     {
@@ -12,6 +14,6 @@ public class SpawnedCarBehaviour : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = -transform.forward * 50f;
+        rb.velocity = -transform.forward * speed;
     }
 }
