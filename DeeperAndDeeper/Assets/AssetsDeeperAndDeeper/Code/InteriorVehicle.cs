@@ -35,7 +35,8 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (crankLightActive)
         {
-            StopCoroutine(CrankLightRoutine);
+            if (CrankLightRoutine != null)
+                StopCoroutine(CrankLightRoutine);
             CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.eulerAngles, new Vector3(-4.209f, -169.079f, 80f)));
 
             foreach (var light in lights)
@@ -45,7 +46,8 @@ public class InteriorVehicle : MonoBehaviour
         }
         else
         {
-            StopCoroutine(CrankLightRoutine);
+            if (CrankLightRoutine != null)
+                StopCoroutine(CrankLightRoutine);
             CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.eulerAngles, new Vector3(-4.209f, -169.079f, 65.334f)));
 
             foreach (var light in lights)
@@ -61,12 +63,14 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (sunScreenLeftActive)
         {
-            StopCoroutine(sunScreenLeftRoutine);
+            if (sunScreenLeftRoutine != null)
+                StopCoroutine(sunScreenLeftRoutine);
             sunScreenLeftRoutine = StartCoroutine(LerpFromTo(SunScreenLeft, SunScreenLeft.eulerAngles, Vector3.right * 100));
         }
         else
         {
-            StopCoroutine(sunScreenLeftRoutine);
+            if (sunScreenLeftRoutine != null)
+                StopCoroutine(sunScreenLeftRoutine);
             sunScreenLeftRoutine = StartCoroutine(LerpFromTo(SunScreenLeft, SunScreenLeft.eulerAngles, Vector3.zero));
         }
 
@@ -77,12 +81,14 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (sunScreenRightActive)
         {
-            StopCoroutine(sunScreenRightRoutine);
+            if (sunScreenRightRoutine != null)
+                StopCoroutine(sunScreenRightRoutine);
             sunScreenRightRoutine = StartCoroutine(LerpFromTo(SunScreenRight, SunScreenRight.eulerAngles, Vector3.right * 100));
         }
         else
         {
-            StopCoroutine(sunScreenRightRoutine);
+            if (sunScreenRightRoutine != null)
+                StopCoroutine(sunScreenRightRoutine);
             sunScreenRightRoutine = StartCoroutine(LerpFromTo(SunScreenRight, SunScreenRight.eulerAngles, Vector3.zero));
         }
 
@@ -93,12 +99,14 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (gloveBoxActive)
         {
-            StopCoroutine(GloveBoxRoutine);
+            if (GloveBoxRoutine != null)
+                StopCoroutine(GloveBoxRoutine);
             GloveBoxRoutine = StartCoroutine(LerpFromTo(GloveBox, GloveBox.eulerAngles, Vector3.right * 100));
         }
         else
         {
-            StopCoroutine(GloveBoxRoutine);
+            if (GloveBoxRoutine != null)
+                StopCoroutine(GloveBoxRoutine);
             GloveBoxRoutine = StartCoroutine(LerpFromTo(GloveBox, GloveBox.eulerAngles, Vector3.zero));
         }
 
@@ -109,7 +117,8 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (crankWipperActive)
         {
-            StopCoroutine(CrankWipperRoutine);
+            if (CrankWipperRoutine != null)
+                StopCoroutine(CrankWipperRoutine);
             CrankWipperRoutine = StartCoroutine(WipperLerpFromTo(WipperRight, WipperRight.eulerAngles, new Vector3(25f, 0f, 65f)));
         }
 
