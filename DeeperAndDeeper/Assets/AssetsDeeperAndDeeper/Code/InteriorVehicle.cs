@@ -26,6 +26,8 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (crankLightActive)
         {
+            WipperLeft.eulerAngles = new Vector3(-4.209f, -169.079f, 80f);
+
             foreach (var light in lights)
             {
                 light.enabled = false;
@@ -33,6 +35,8 @@ public class InteriorVehicle : MonoBehaviour
         }
         else
         {
+            WipperLeft.eulerAngles = new Vector3(-4.209f, -169.079f, 65.334f);
+
             foreach (var light in lights)
             {
                 light.enabled = true;
@@ -46,11 +50,11 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (sunScreenLeftActive)
         {
-
+            SunScreenLeft.eulerAngles = Vector3.right * 100;
         }
         else
         {
-
+            SunScreenLeft.eulerAngles = Vector3.zero;
         }
 
         sunScreenLeftActive = !sunScreenLeftActive;
@@ -60,11 +64,11 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (sunScreenRightActive)
         {
-
+            SunScreenRight.eulerAngles = Vector3.right * 100;
         }
         else
         {
-
+            SunScreenRight.eulerAngles = Vector3.zero;
         }
 
         sunScreenRightActive = !sunScreenRightActive;
@@ -74,11 +78,11 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (gloveBoxActive)
         {
-
+            GloveBox.eulerAngles = Vector3.right * 100;
         }
         else
         {
-
+            GloveBox.eulerAngles = Vector3.zero;
         }
 
         gloveBoxActive = !gloveBoxActive;
@@ -88,11 +92,11 @@ public class InteriorVehicle : MonoBehaviour
     {
         if (crankWipperActive)
         {
-
+            WipperRight.eulerAngles = new Vector3(-4.209f, -9.079f, 80f);
         }
         else
         {
-
+            WipperRight.eulerAngles = new Vector3(-4.209f, -9.079f, 65.334f);
         }
 
         crankWipperActive = !crankWipperActive;
