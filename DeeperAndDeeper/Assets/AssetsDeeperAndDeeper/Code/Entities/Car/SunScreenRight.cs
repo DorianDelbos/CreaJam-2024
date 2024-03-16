@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CrankLight : MonoBehaviour, ISelection
+public class SunScreenRight : MonoBehaviour, ISelection
 {
     private bool isHover = false;
     private bool isSelected = false;
@@ -18,10 +18,8 @@ public class CrankLight : MonoBehaviour, ISelection
     public void OnClick()
     {
         InteriorVehicle vehicle = GameObject.FindFirstObjectByType<InteriorVehicle>();
-        vehicle.ToggleLight();
+        vehicle.ToggleSunScreenRight();
     }
-
-    // Start is called before the first frame update
     void Start()
     {
         
