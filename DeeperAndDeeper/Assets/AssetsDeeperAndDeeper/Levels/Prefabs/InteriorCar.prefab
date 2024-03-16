@@ -557,8 +557,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3999997, y: 0.039999958, z: 0.59999996}
-  m_Center: {x: -0.0000005066395, y: -0.00000047683716, z: 0.29999998}
+  m_Size: {x: 0.42000002, y: 0.01199999, z: 0.18000002}
+  m_Center: {x: 0.000000007450581, y: 0, z: 0.09000001}
 --- !u!114 &4450316490855223376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,8 +596,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.0000007, y: 0.99999964, z: 2}
-  m_Center: {x: -0.000005260858, y: 0.5000009, z: 0.000009655952}
+  m_Size: {x: 0.60000014, y: 0.29999995, z: 0.59999996}
+  m_Center: {x: 0.252983, y: 0.19315256, z: 0.92646956}
 --- !u!114 &4180863347004867713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,8 +647,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.2599999, y: 0.5398062, z: 0.2763648}
-  m_Center: {x: -0.00000047683716, y: 0.24823749, z: -0.13358659}
+  m_Size: {x: 0.37800002, y: 0.16194187, z: 0.08290945}
+  m_Center: {x: 0, y: 0.07447126, z: -0.040076017}
 --- !u!114 &2906182000973530534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,8 +738,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.52, y: 0.4949534, z: 0.4399734}
-  m_Center: {x: -0.00000047683716, y: 0.07575271, z: 0.19334581}
+  m_Size: {x: 0.31199998, y: 0.312, z: 0.081421696}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0.040710803}
 --- !u!114 &5088970945663422748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,8 +783,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3999997, y: 0.039999958, z: 0.59999996}
-  m_Center: {x: -0.00000002980232, y: -0.00000047683716, z: 0.29999998}
+  m_Size: {x: 0.42, y: 0.01199999, z: 0.18000002}
+  m_Center: {x: 0, y: 0, z: 0.09000001}
 --- !u!114 &9216800844550821812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,8 +828,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.0000007, y: 0.9999999, z: 2.0000005}
-  m_Center: {x: -0.0000022053719, y: 0.49999958, z: 0.0000038743024}
+  m_Size: {x: 0.6000005, y: 0.29999995, z: 0.6000002}
+  m_Center: {x: 0.30899045, y: 0.20966947, z: -0.8982878}
 --- !u!114 &1325416064312364085
 MonoBehaviour:
   m_ObjectHideFlags: 0
