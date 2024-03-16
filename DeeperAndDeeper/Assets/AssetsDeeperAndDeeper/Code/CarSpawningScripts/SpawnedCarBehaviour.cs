@@ -1,24 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnedCarBehaviour : MonoBehaviour
 {
     public Rigidbody rb;
+    [SerializeField] private float timerToDelete = 5.0f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        Destroy(gameObject, timerToDelete);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector3(0, 0, -50f);
-        if (transform.position.z < -10)
-        {
-            Destroy(gameObject);
-        }
+        rb.velocity = -transform.forward * 50f;
     }
 }

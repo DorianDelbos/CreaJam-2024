@@ -82,7 +82,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 86
   m_CollisionDetection: 0
 --- !u!114 &8053486563148011550
 MonoBehaviour:
@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 487311585407764623}
+  timerToDelete: 5
 --- !u!1 &321914633103400711
 GameObject:
   m_ObjectHideFlags: 0
