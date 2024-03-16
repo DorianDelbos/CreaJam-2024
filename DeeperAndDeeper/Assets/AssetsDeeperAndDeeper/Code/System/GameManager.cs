@@ -2,7 +2,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public enum State
+    {
+        INGAME,
+        LOOKING_OBJECT
+    }
     public static GameManager instance;
+    public State GameState { get; private set; } = State.INGAME;
 
     private void Awake()
     {
@@ -17,5 +23,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+    }
+
+    public void ChangeState(State state)
+    {
+        ISelection.lerpTime = 0;
+        GameState = state;
     }
 }
