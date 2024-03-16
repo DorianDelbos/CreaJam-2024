@@ -37,7 +37,7 @@ public class InteriorVehicle : MonoBehaviour
         {
             if (CrankLightRoutine != null)
                 StopCoroutine(CrankLightRoutine);
-            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.localEulerAngles, new Vector3(-4.209f, -154.08f, 95.334f)));
+            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.localEulerAngles, new Vector3(0f, 0f, 16f), 0.2f));
 
             foreach (var light in lights)
             {
@@ -48,7 +48,7 @@ public class InteriorVehicle : MonoBehaviour
         {
             if (CrankLightRoutine != null)
                 StopCoroutine(CrankLightRoutine);
-            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.localEulerAngles, new Vector3(-4.209f, -169.079f, 95.334f)));
+            CrankLightRoutine = StartCoroutine(LerpFromTo(CrankLight, CrankLight.localEulerAngles, new Vector3(0f, 0f, 0f), 0.2f));
 
             foreach (var light in lights)
             {
@@ -123,15 +123,15 @@ public class InteriorVehicle : MonoBehaviour
                 StopCoroutine(WipperLeftRoutine);
             if (WipperRightRoutine != null)
                 StopCoroutine(WipperRightRoutine);
-            CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(-4.209f, -9.079f, 65.334f)));
-            WipperLeftRoutine = StartCoroutine(LerpFromTo(WipperLeft, WipperLeft.localEulerAngles, new Vector3(25f, 0f, 0f)));
-            WipperRightRoutine = StartCoroutine(LerpFromTo(WipperRight, WipperRight.localEulerAngles, new Vector3(25f, 0f, 0f)));
+            CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(0f, 0f, -16f), 0.2f));
+            WipperLeftRoutine = StartCoroutine(LerpFromTo(WipperLeft, WipperLeft.localEulerAngles, new Vector3(25f, 0f, -10f)));
+            WipperRightRoutine = StartCoroutine(LerpFromTo(WipperRight, WipperRight.localEulerAngles, new Vector3(25f, 0f, -10f)));
         }
         else
         {
             if (CrankWipperRoutine != null)
                 StopCoroutine(CrankWipperRoutine);
-            CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(-4.209f, -9.079f, 95.334f)));
+            CrankWipperRoutine = StartCoroutine(LerpFromTo(CrankWipper, CrankWipper.localEulerAngles, new Vector3(0f, 0f, 0f), 0.2f));
             WipperLeftRoutine = StartCoroutine(LerpFromTo(WipperLeft, WipperLeft.localEulerAngles, new Vector3(25f, 0f, -85f)));
             WipperRightRoutine = StartCoroutine(LerpFromTo(WipperRight, WipperRight.localEulerAngles, new Vector3(25f, 0f, -85f)));
         }
