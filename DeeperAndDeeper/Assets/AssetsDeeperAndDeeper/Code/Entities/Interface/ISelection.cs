@@ -34,9 +34,10 @@ public interface ISelection
     {
         Renderer renderer = (this as MonoBehaviour).GetComponent<MeshRenderer>();
         List<Material> matList = new List<Material>();
-        foreach(var mat in renderer.materials)
+        foreach (var mat in renderer.materials)
         {
-            matList.Add(mat);
+            if (mat != outlineMaterial)
+                matList.Add(mat);
         }
         if (IsHover) matList.Add(outlineMaterial);
         renderer.SetMaterials(matList);
@@ -78,7 +79,8 @@ public interface ISelection
         List<Material> matList = new List<Material>();
         foreach (var mat in renderer.materials)
         {
-            matList.Add(mat);
+            if (mat != outlineMaterial)
+                matList.Add(mat);
         }
         renderer.SetMaterials(matList);
     }
