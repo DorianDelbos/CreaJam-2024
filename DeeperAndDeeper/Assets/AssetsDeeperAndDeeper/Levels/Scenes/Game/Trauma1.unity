@@ -1484,6 +1484,7 @@ GameObject:
   - component: {fileID: 1736620962}
   - component: {fileID: 1736620964}
   - component: {fileID: 1736620963}
+  - component: {fileID: 1736620965}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -1500,7 +1501,7 @@ Transform:
   m_GameObject: {fileID: 1736620961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -500, y: 0, z: -500}
+  m_LocalPosition: {x: -500, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1565,6 +1566,19 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+--- !u!114 &1736620965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736620961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d9eac91d39de8741a8940b5728a6f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 20
 --- !u!1001 &1747094093
 PrefabInstance:
   m_ObjectHideFlags: 0

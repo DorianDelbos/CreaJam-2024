@@ -81,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 5802c7268add5554f83704185736d19b,
         type: 3}
       propertyPath: m_Name
-      value: Road Variant
+      value: Road
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -110,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc266c5db3a60047912f6e82fc2914d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xSpeed: 0.5
+  xSpeed: 1
