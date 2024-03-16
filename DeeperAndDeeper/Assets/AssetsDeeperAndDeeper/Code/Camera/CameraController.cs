@@ -28,6 +28,7 @@ public class CameraController : MonoBehaviour
                 break;
             case GameManager.State.IN_GAME2:
                 //RotationBehaviour();
+                RotationYBehaviour();
                 break;
         }
 
@@ -40,6 +41,14 @@ public class CameraController : MonoBehaviour
         turn.y = Mathf.Clamp(turn.y, -yMaxRot, yMaxRot);
         turn.x = Mathf.Clamp(turn.x, -xMaxRot, xMaxRot);
         Quaternion targetRotation = Quaternion.Euler(-turn.y, turn.x, 0.0f);
+        this.transform.localRotation = Quaternion.Slerp(this.transform.localRotation, targetRotation, 0.2f);
+    }
+
+    private void RotationYBehaviour()
+    {
+        turn.y += Input.GetAxisRaw("Mouse Y") * rotationSpeed;
+        turn.y = Mathf.Clamp(turn.y, -yMaxRot, yMaxRot);
+        Quaternion targetRotation = Quaternion.Euler(-turn.y, 0, 0.0f);
         this.transform.localRotation = Quaternion.Slerp(this.transform.localRotation, targetRotation, 0.2f);
     }
 

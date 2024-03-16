@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     public void ChangeState(State state)
     {
         ISelection.lerpTime = 0;

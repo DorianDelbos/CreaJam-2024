@@ -57,11 +57,7 @@ public class PlayerInput : MonoBehaviour
             gm.ChangeState(GameManager.State.IN_GAME1);
             ISelection.lerpTime = 0;
         }
-        if (gm.GameState == GameManager.State.UNLOCK_DIGIT && Input.GetKeyDown(KeyCode.Escape))
-        {
-            gm.ChangeState(GameManager.State.IN_GAME2);
-            ISelection.lerpTime = 0;
-        }
+
     }
     private void MovementBehaviour()
     {
@@ -69,7 +65,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             result += this.transform.forward * Time.deltaTime * speed;
-            
+
         }
         else if (Input.GetKey(KeyCode.S))
         {
@@ -92,5 +88,6 @@ public class PlayerInput : MonoBehaviour
         xRot += Input.GetAxisRaw("Mouse X") * rotationSpeed;
         Quaternion targetRotation = Quaternion.Euler(0, xRot, 0.0f);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.2f);
+
     }
 }
