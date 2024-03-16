@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class FriendlyReport : MonoBehaviour, ISelection
 {
@@ -7,6 +9,7 @@ public class FriendlyReport : MonoBehaviour, ISelection
     public Vector3 basePos;
     public Quaternion baseRot; 
     public float offsetCamera = 0.5f;
+    [SerializeField] PlayableDirector sequence;
     public float OffsetCamera { get => offsetCamera; set => offsetCamera = value; }
 
     public bool IsHover { get => isHover; set => isHover = value; }
@@ -22,6 +25,11 @@ public class FriendlyReport : MonoBehaviour, ISelection
         ISelection.selectedObjet = this;
     }
 
+    public void OnUnselect()
+    {
+        sequence.Play();
+        StartCoroutine(BeginSubGame1(2));
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,5 +41,24 @@ public class FriendlyReport : MonoBehaviour, ISelection
     void Update()
     {
         (this as ISelection).Update();
+    }
+
+    IEnumerator BeginSubGame1(float timeToWait)
+    {
+        yield return new WaitForSeconds(timeToWait);
+        GameManager.instance.ChangeState(GameManager.State.SUB_GAME_1);
+        StartCoroutine(ResetCamera());
+    }
+    IEnumerator ResetCamera()
+    {
+        float timer = 0f;
+        Quaternion currentCamRot = Camera.main.transform.rotation;
+        Quaternion wantedRotation = Quaternion.Euler(0, 0, 0);
+        while(timer < 1)
+        {
+            Camera.main.transform.rotation = Quaternion.Slerp(currentCamRot, wantedRotation, timer);
+            timer += 0.01f;
+            yield return null;
+        }
     }
 }

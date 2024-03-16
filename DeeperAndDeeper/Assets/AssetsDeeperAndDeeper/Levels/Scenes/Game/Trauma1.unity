@@ -1051,7 +1051,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 717453806}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.004807688, y: 0.01709576, z: -0.00011950544, w: -0.99984235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.15, y: 1.45, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1932,7 +1932,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 1179d157aba8c4e46b97712208a31059, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -2266,7 +2266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1812183138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,6 +2898,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteriorCar
       objectReference: {fileID: 0}
+    - target: {fileID: 2011539824015097245, guid: 5712c354a03e4dc46a1d235cf1c7e05d,
+        type: 3}
+      propertyPath: sequence
+      value: 
+      objectReference: {fileID: 1703301195}
     - target: {fileID: 3100616390864323019, guid: 5712c354a03e4dc46a1d235cf1c7e05d,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -27,12 +27,10 @@ public interface ISelection
         }
         if ((GameManager.instance.GameState == GameManager.State.IN_GAME1 || GameManager.instance.GameState == GameManager.State.SUB_GAME_1) && this == selectedObjet && (go.transform.position != BasePos || go.transform.rotation != BaseRot))
         {
-            Debug.Log("Back to pos");
             BringBackToPos();
         }
         else if (GameManager.instance.GameState == GameManager.State.LOOKING_OBJECT && this == selectedObjet && go.transform.position != desiredPos)
         {
-            Debug.Log("come to camera");
             BringToCam();
         }
     }
@@ -83,6 +81,9 @@ public interface ISelection
         }
     }
     public void OnClick();
+    public virtual void OnUnselect()
+    {
+    }
     public void ResetMat()
     {
         Renderer renderer = (this as MonoBehaviour).GetComponentInChildren<MeshRenderer>();
