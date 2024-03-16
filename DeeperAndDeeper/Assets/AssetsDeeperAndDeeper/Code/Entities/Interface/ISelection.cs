@@ -7,9 +7,10 @@ using UnityEngine;
 public interface ISelection
 {
     static float lerpTime = 0f;
-    private static float offsetCameraObject = 4f;
-    private static float lerpSpeed = 0.025f;
-    static Material outlineMaterial = Resources.Load<Material>("OutlineShaderMat");
+    private const float offsetCameraObject = 4f;
+    private const float lerpSpeed = 0.025f;
+    private const string outLineShaderName = "OutlineShaderMat";
+    static Material outlineMaterial = Resources.Load<Material>(outLineShaderName);
     static ISelection selectedObjet;
     bool IsHover { get; set; }
     bool IsSelected { get; set; }
@@ -21,11 +22,11 @@ public interface ISelection
         Vector3 camPos = Camera.main.transform.position;
         Vector3 direction = camPos - BasePos;
         Vector3 desiredPos = camPos - direction.normalized * offsetCameraObject;
-        if (GameManager.instance.GameState == GameManager.State.INGAME && (go.transform.position != BasePos || go.transform.rotation != BaseRot))
+        if (GameManager.instance.GameState == GameManager.State.INGAME && this == selectedObjet && (go.transform.position != BasePos || go.transform.rotation != BaseRot))
         {
             BringBackToPos();
         }
-        else if (GameManager.instance.GameState == GameManager.State.LOOKING_OBJECT && go.gameObject.transform.position != desiredPos)
+        else if (GameManager.instance.GameState == GameManager.State.LOOKING_OBJECT && this == selectedObjet && go.transform.position != desiredPos)
         {
             BringToCam();
         }
@@ -36,7 +37,7 @@ public interface ISelection
         List<Material> matList = new List<Material>();
         foreach (var mat in renderer.materials)
         {
-            if (mat != outlineMaterial)
+            if (mat.name != outLineShaderName + " (Instance)")
                 matList.Add(mat);
         }
         if (IsHover) matList.Add(outlineMaterial);
@@ -46,10 +47,14 @@ public interface ISelection
     void BringToCam()
     {
         GameObject go = (this as MonoBehaviour).gameObject;
-        Vector3 camPos = Camera.main.transform.position;
-        Vector3 direction = camPos - BasePos;
-        Vector3 desiredPos = camPos - direction.normalized * offsetCameraObject;
-        go.transform.LookAt(Camera.main.transform);
+        Vector3 pointToGo = Camera.main.transform.position;
+        Vector3 direction = pointToGo - BasePos;
+        Vector3 desiredPos = pointToGo - direction.normalized * offsetCameraObject;
+        if (Vector3.Angle(go.transform.position, pointToGo) > 1)
+        {
+            var targetRotation = Quaternion.LookRotation(go.transform.position - Camera.main.transform.position);
+            Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, targetRotation, 0.025f);
+        }
         if (lerpTime < 1)
         {
             go.transform.position = Vector3.Lerp(BasePos, desiredPos, lerpTime);
@@ -79,7 +84,7 @@ public interface ISelection
         List<Material> matList = new List<Material>();
         foreach (var mat in renderer.materials)
         {
-            if (mat != outlineMaterial)
+            if (mat.name != outLineShaderName + " (Instance)")
                 matList.Add(mat);
         }
         renderer.SetMaterials(matList);

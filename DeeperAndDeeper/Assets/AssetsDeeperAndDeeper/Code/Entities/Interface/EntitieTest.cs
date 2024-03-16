@@ -37,6 +37,5 @@ public class EntitieTest : MonoBehaviour, ISelection
             (this as ISelection).SelectUpdateOutline();
             isHover = false;
         }
-        
     }
 }
