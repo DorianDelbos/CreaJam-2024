@@ -414,6 +414,7 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Dialogue
   - SoundEffect
   BanksToLoad: []
   LiveUpdatePort: 9264

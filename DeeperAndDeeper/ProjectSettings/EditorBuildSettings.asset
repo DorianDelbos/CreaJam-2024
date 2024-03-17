@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/AssetsDeeperAndDeeper/Levels/Scenes/Game/Trauma3.unity
     guid: 616bfff5e029d904d9ebd0db61aba3c8
+  - enabled: 1
+    path: Assets/AssetsDeeperAndDeeper/Levels/Scenes/Menu/Credits.unity
+    guid: efdba7f2dbd5b1a468007c65b2e088d1
   m_configObjects: {}

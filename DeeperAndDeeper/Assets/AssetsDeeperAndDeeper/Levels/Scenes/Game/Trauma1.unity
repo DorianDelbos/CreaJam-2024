@@ -1524,7 +1524,7 @@ MonoBehaviour:
       Data4: 627711982
     Path: event:/CarMotor
   Event: 
-  PlayEvent: 1
+  PlayEvent: 0
   StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
@@ -1534,6 +1534,36 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &1031188253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113751266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 6760176914b55d94da99f8fe9dae2332, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1031188251}
+          m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1226872599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3016,6 +3046,10 @@ PlayableDirector:
     value: {fileID: 1935900019}
   - key: {fileID: -6728042981302651943, guid: fd7a03a7a8b840e4baef8ff0afed6468, type: 2}
     value: {fileID: 0}
+  - key: {fileID: 4114571940419473979, guid: fd7a03a7a8b840e4baef8ff0afed6468, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -6648290297797617726, guid: fd7a03a7a8b840e4baef8ff0afed6468, type: 2}
+    value: {fileID: 1031188253}
   m_ExposedReferences:
     m_References:
     - be3ca316b321dba4883a860b709e2b8d: {fileID: 1935900017}
@@ -3418,6 +3452,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1031188251}
+    - targetCorrespondingSourceObject: {fileID: 1181107473431291060, guid: 5712c354a03e4dc46a1d235cf1c7e05d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1031188253}
     - targetCorrespondingSourceObject: {fileID: 717045113086214143, guid: 5712c354a03e4dc46a1d235cf1c7e05d,
         type: 3}
       insertIndex: -1
