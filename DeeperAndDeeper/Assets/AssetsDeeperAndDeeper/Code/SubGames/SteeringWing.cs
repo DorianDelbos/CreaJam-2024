@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SteeringWing : MonoBehaviour, ISelection
@@ -34,6 +35,9 @@ public class SteeringWing : MonoBehaviour, ISelection
     private float indicatorRotationZ;
     private float speed = 2f;
 
+    private float TimeBeforeWin = 10f;
+    private float TimeGood = 0f;
+    
     public void OnClick()
     {
         InteriorVehicle vehicle = GameObject.FindFirstObjectByType<InteriorVehicle>();
@@ -66,10 +70,14 @@ public class SteeringWing : MonoBehaviour, ISelection
             arrowImage.transform.eulerAngles = -rotationZ;
             #endregion
 
-            // Nique le POO sorry je fais n'importe quoi <3
+            // Nique la POO sorry je fais n'importe quoi <3
 
             #region SUB_GAME1
-
+            TimeGood += Time.deltaTime;
+            if(TimeGood > TimeBeforeWin)
+            {
+                Win();
+            }
             if (rotationIndicatorRoutine == null) 
                 StartCoroutine(RotateIndicator());
             #endregion
@@ -100,6 +108,7 @@ public class SteeringWing : MonoBehaviour, ISelection
         if (CheckArrowInIndicator())
         {
             Lose();
+           
         }
 
         rotationIndicatorRoutine = null;
@@ -122,5 +131,11 @@ public class SteeringWing : MonoBehaviour, ISelection
         }
 
         indicatorImage.GetComponent<Image>().sprite = images[(int)difficulty];
+        TimeGood = 0f;
+    }
+
+    void Win()
+    {
+        SceneManager.LoadScene("Trauma2");
     }
 }
