@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
         IN_GAME3,
         LOOKING_OBJECT,
         SUB_GAME_1,
+        SUB_GAME_2,
+        SUB_GAME_3,
 
         UNLOCK_DIGIT
     }

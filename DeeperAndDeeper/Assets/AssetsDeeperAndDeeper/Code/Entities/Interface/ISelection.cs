@@ -20,12 +20,12 @@ public interface ISelection
         Vector3 direction = camPos - BasePos;
         Vector3 desiredPos = camPos - direction.normalized * OffsetCamera;
         GameManager gm = GameManager.instance;
-        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.SUB_GAME_1 || gm.GameState == GameManager.State.IN_GAME2)
+        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.SUB_GAME_1 || gm.GameState == GameManager.State.IN_GAME2 || gm.GameState == GameManager.State.SUB_GAME_2)
         {
             SelectUpdateOutline();
             IsHover = false;
         }
-        if ((GameManager.instance.GameState == GameManager.State.IN_GAME1 || GameManager.instance.GameState == GameManager.State.SUB_GAME_1) && this == selectedObjet && (go.transform.position != BasePos || go.transform.rotation != BaseRot))
+        if ((GameManager.instance.GameState == GameManager.State.IN_GAME1 || GameManager.instance.GameState == GameManager.State.SUB_GAME_1 || GameManager.instance.GameState == GameManager.State.IN_GAME2 || GameManager.instance.GameState == GameManager.State.SUB_GAME_2) && this == selectedObjet && (go.transform.position != BasePos || go.transform.rotation != BaseRot))
         {
             BringBackToPos();
         }

@@ -38,7 +38,9 @@ public class PlayerInputHandler : MonoBehaviour
         }
 
         if (gm.GameState == GameManager.State.IN_GAME2 ||
-            gm.GameState == GameManager.State.IN_GAME3)
+            gm.GameState == GameManager.State.SUB_GAME_2 ||
+            gm.GameState == GameManager.State.IN_GAME3 ||
+            gm.GameState == GameManager.State.SUB_GAME_3)
         {
             MovementHandle();
             GravityHandle();
