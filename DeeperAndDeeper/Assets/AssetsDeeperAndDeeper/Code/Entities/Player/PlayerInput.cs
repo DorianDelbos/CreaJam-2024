@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
     CharacterController cc;
     float xRot = 0;
     [SerializeField] float rotationSpeed = 0;
+    private Vector3 movement;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
@@ -39,8 +41,10 @@ public class PlayerInput : MonoBehaviour
         if (gm.GameState == GameManager.State.IN_GAME2 ||
             gm.GameState == GameManager.State.IN_GAME3)
         {
-            MovementBehaviour();
-            RotationBehaviour();
+            MovementHandle();
+            GravityHandle();
+            RotationHandle();
+            ApplyMovement();
         }
 
         //----------------LOOKING OBJECT------------------//
@@ -61,35 +65,45 @@ public class PlayerInput : MonoBehaviour
         }
 
     }
-    private void MovementBehaviour()
+    private void MovementHandle()
     {
-        Vector3 result = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            result += this.transform.forward * Time.deltaTime * speed;
+            movement += this.transform.forward * Time.deltaTime * speed;
 
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            result -= this.transform.forward * Time.deltaTime * speed;
+            movement -= this.transform.forward * Time.deltaTime * speed;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            result += this.transform.right * Time.deltaTime * speed;
+            movement += this.transform.right * Time.deltaTime * speed;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            result -= this.transform.right * Time.deltaTime * speed;
+            movement -= this.transform.right * Time.deltaTime * speed;
         }
-        cc.Move(result);
     }
 
-    private void RotationBehaviour()
+    private void RotationHandle()
     {
         xRot += Input.GetAxisRaw("Mouse X") * rotationSpeed;
         Quaternion targetRotation = Quaternion.Euler(0, xRot, 0.0f);
         this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, 0.2f);
+    }
 
+    private void GravityHandle()
+    {
+        float previousYVelocity = movement.y;
+        movement.y += -9.81f * Time.deltaTime;
+        movement.y = Mathf.Max((previousYVelocity + movement.y) * 0.5f, -20f);
+    }
+
+    private void ApplyMovement()
+    {
+        cc.Move(movement);
+        movement = Vector3.zero;
     }
 }

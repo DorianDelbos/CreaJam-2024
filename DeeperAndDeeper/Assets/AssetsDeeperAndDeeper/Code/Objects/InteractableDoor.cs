@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Wardrobe : MonoBehaviour, ISelection
+public class InteractableDoor : MonoBehaviour, ISelection
 {
     #region ISelection
     private bool isHover = false;

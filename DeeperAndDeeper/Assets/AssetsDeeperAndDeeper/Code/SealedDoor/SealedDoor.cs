@@ -188,7 +188,6 @@ public class SealedDoor : MonoBehaviour, ISelection
         }
         if (index != -1)
         {
-            Debug.Log(index);
             givenPassword[index] = number;
             UpdateDisplayPassword();
         }
