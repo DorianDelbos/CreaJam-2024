@@ -20,7 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
         GameManager gm = GameManager.instance;
 
         //----------------IN GAME------------------//
-        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.IN_GAME2 || gm.GameState == GameManager.State.IN_GAME3)
+        if (gm.GameState == GameManager.State.IN_GAME1 || gm.GameState == GameManager.State.IN_GAME2 || gm.GameState == GameManager.State.SUB_GAME_2 || gm.GameState == GameManager.State.IN_GAME3)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit info))
