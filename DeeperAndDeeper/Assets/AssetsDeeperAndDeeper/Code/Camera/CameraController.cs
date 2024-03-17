@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    Vector2 turn = Vector3.zero;
+    Vector2 turn =  Vector3.zero;
     [Header("1st game")]
     [SerializeField] float rotationSpeed = 2;
     [SerializeField] float xMaxRot = 45;
@@ -22,7 +22,15 @@ public class CameraController : MonoBehaviour
                 RotationBehaviour();
                 break;
             case GameManager.State.IN_GAME2:
-                //RotationBehaviour();
+                RotationYBehaviour();
+                break;
+            case GameManager.State.SUB_GAME_2:
+                RotationYBehaviour();
+                break;
+            case GameManager.State.IN_GAME3:
+                RotationYBehaviour();
+                break;
+            case GameManager.State.SUB_GAME_3:
                 RotationYBehaviour();
                 break;
         }

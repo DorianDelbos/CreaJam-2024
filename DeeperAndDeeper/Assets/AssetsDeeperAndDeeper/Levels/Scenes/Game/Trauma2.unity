@@ -5185,7 +5185,7 @@ MonoBehaviour:
   isSelected: 0
   basePos: {x: 0, y: 0, z: 0}
   baseRot: {x: 0, y: 0, z: 0, w: 0}
-  offsetCamera: 0.1
+  offsetCamera: 1
   sequence: {fileID: 1842442495}
   subScene1: {fileID: 1743064944}
   subScene2: {fileID: 755201786}

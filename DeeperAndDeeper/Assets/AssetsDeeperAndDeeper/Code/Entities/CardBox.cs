@@ -34,7 +34,6 @@ public class CardBox : MonoBehaviour, ISelection
 
     public void OnUnselect()
     {
-        StartCoroutine(BeginSubGame1(2));
         FindObjectOfType<PlayerInputHandler>().hasKey = true;
         GameManager.instance.ChangeState(GameManager.State.SUB_GAME_2);
     }
@@ -43,23 +42,5 @@ public class CardBox : MonoBehaviour, ISelection
     void Update()
     {
         (this as ISelection).Update();
-    }
-
-    IEnumerator BeginSubGame1(float timeToWait)
-    {
-        yield return new WaitForSeconds(timeToWait);
-        StartCoroutine(ResetCamera());
-    }
-    IEnumerator ResetCamera()
-    {
-        float timer = 0f;
-        Quaternion currentCamRot = Camera.main.transform.rotation;
-        Quaternion wantedRotation = Quaternion.Euler(0, 0, 0);
-        while (timer < 1)
-        {
-            Camera.main.transform.rotation = Quaternion.Slerp(currentCamRot, wantedRotation, timer);
-            timer += 0.01f;
-            yield return null;
-        }
     }
 }
