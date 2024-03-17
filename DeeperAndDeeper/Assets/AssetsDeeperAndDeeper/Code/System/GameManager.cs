@@ -5,10 +5,11 @@ public class GameManager : MonoBehaviour
     public enum State
     {
         IN_GAME1,
+        IN_GAME2,
+        IN_GAME3,
         LOOKING_OBJECT,
         SUB_GAME_1,
 
-        IN_GAME2,
         UNLOCK_DIGIT
     }
     public static GameManager instance;

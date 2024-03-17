@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -36,6 +37,8 @@ public class SealedDoor : MonoBehaviour, ISelection
 
     [SerializeField] Transform historyLayout;
     [SerializeField] GameObject pfNumberCase;
+
+    [SerializeField] private UnityEvent onResolve;
 
     private void Start()
     {
@@ -84,6 +87,7 @@ public class SealedDoor : MonoBehaviour, ISelection
 
     public void OnResolve()
     {
+        onResolve?.Invoke();
     }
 
     // Update is called once per frame
@@ -216,6 +220,7 @@ public class SealedDoor : MonoBehaviour, ISelection
     {
         isActive = false;
         DigitUi.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
         GameManager.instance.ChangeState(GameManager.State.IN_GAME2);
     }
 
