@@ -29,7 +29,7 @@ public class SteeringWing : MonoBehaviour, ISelection
     [SerializeField] private RectTransform indicatorImage;
     [SerializeField] private List<Sprite> images;
     private Difficulty difficulty = Difficulty.HARD;
-    private int[] angleDifficulty = new int[3] { 15, 30, 45 };
+    private int[] angleDifficulty = new int[3] { 90, 60, 30 };
     private Coroutine rotationIndicatorRoutine;
     private float indicatorRotationZ;
     private float speed = 2f;
@@ -85,12 +85,13 @@ public class SteeringWing : MonoBehaviour, ISelection
         float duringTime = Random.Range(0.5f, 1.5f);
         float currentTime = 0;
         bool isRight = Random.value < 0.5;
+        float angleClamp = 90f - angleDifficulty[(int)difficulty] / 2f;
 
         while (currentTime < duringTime /*&& !CheckArrowInIndicator()*/)
         {
             float dt = Time.deltaTime;
             currentTime += dt;
-            indicatorRotationZ = Mathf.Clamp(indicatorRotationZ + dt * speed * (isRight ? -1 : 1), -70f, 70f);
+            indicatorRotationZ = Mathf.Clamp(indicatorRotationZ + dt * speed * (isRight ? -1 : 1), -angleClamp, angleClamp);
             indicatorImage.localEulerAngles = Vector3.forward * indicatorRotationZ;
 
             yield return null;
@@ -106,14 +107,16 @@ public class SteeringWing : MonoBehaviour, ISelection
 
     private bool CheckArrowInIndicator()
     {
-        return Quaternion.Angle(arrowImage.rotation, indicatorImage.rotation) > angleDifficulty[(int)difficulty];
+        return Quaternion.Angle(arrowImage.rotation, indicatorImage.rotation) > angleDifficulty[(int)difficulty] / 2f;
     }
 
     void Lose()
     {
         arrowImage.rotation = Quaternion.Euler(Vector3.zero);
         indicatorImage.rotation = Quaternion.Euler(Vector3.zero);
-        if(difficulty != Difficulty.EASY)
+        indicatorRotationZ = 0;
+        rotationZ = Vector3.zero;
+        if (difficulty != Difficulty.EASY)
         {
             difficulty--;
         }
