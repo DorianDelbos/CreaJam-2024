@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -28,8 +29,13 @@ public class Door : MonoBehaviour
 
         isOpen = false;
         movementRoutine = StartCoroutine(RotateDoor(Vector3.up * 105 * (inverse ? -1 : 1), timeToOpen));
+
     }
 
+    public void GoToCredits()
+    {
+        StartCoroutine(GoCredits());
+    }
     public void Close()
     {
         if (!isOpen)
@@ -56,5 +62,11 @@ public class Door : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    IEnumerator GoCredits()
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Credits");
     }
 }
