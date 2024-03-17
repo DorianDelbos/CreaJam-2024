@@ -16,41 +16,22 @@ public class Desk : MonoBehaviour, ISelection
     public Vector3 BasePos { get => basePos; set => basePos = value; }
     public Quaternion BaseRot { get => baseRot; set => baseRot = value; }
 
-    public Transform tiroir;
-    private Coroutine moveRoutine;
-    private bool isOpen = false;
+    public GameObject subScene1;
+    public GameObject subScene2;
+    public PlayableDirector seq;
 
     public void OnClick()
     {
         if (FindObjectOfType<PlayerInputHandler>().hasKey)
         {
-            if (moveRoutine != null)
-                StopCoroutine(moveRoutine);
-
-            moveRoutine = StartCoroutine(Move(new Vector3(isOpen ? 0.0f : -0.5f, 0f, 0f)));
-
-            isOpen = !isOpen;
+            subScene1.SetActive(false);
+            subScene2.SetActive(true);
+            seq.Play();
         }
     }
 
     private void Update()
     {
         (this as ISelection).Update();
-    }
-
-    private IEnumerator Move(Vector3 to, float timer = 1f)
-    {
-        float elapsed = 0f;
-        Vector3 from = tiroir.localPosition;
-
-        while (elapsed < timer)
-        {
-            elapsed = Mathf.Min(elapsed + Time.deltaTime, timer);
-            float factor = elapsed / timer;
-
-            tiroir.localPosition = Vector3.Lerp(from, to, factor);
-
-            yield return null;
-        }
     }
 }
