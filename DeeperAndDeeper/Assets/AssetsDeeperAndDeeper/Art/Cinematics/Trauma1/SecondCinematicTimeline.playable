@@ -145,30 +145,6 @@ MonoBehaviour:
     m_Objects: []
   template:
     volume: 1
---- !u!114 &-6648290297797617726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
-  m_Name: Signal Track (1)
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips: []
-  m_Markers:
-    m_Objects:
-    - {fileID: 5452187468954745392}
 --- !u!114 &-6507992237372112473
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,15 +225,15 @@ MonoBehaviour:
       Slot13: 0
       Slot14: 0
       Slot15: 0
-  EventLength: 1.549
+  EventLength: 1.524
   eventName: 
   EventReference:
     Guid:
-      Data1: -1723465381
-      Data2: 1314868615
-      Data3: -274250624
-      Data4: 122443458
-    Path: event:/Dialogues/Welcome
+      Data1: -1108720266
+      Data2: 1106222360
+      Data3: -880236411
+      Data4: 352416104
+    Path: event:/Dialogues/Continue
   StopType: 0
   Parameters: []
 --- !u!114 &11400000
@@ -275,7 +251,6 @@ MonoBehaviour:
   m_Version: 0
   m_Tracks:
   - {fileID: -5685620802100911849}
-  - {fileID: -6648290297797617726}
   - {fileID: -6728042981302651943}
   - {fileID: 4114571940419473979}
   m_FixedDuration: 0
@@ -306,10 +281,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 1.8470727810636158
+    m_Start: 1.8720727572217584
     m_ClipIn: 0
     m_Asset: {fileID: -5209743714581342033}
-    m_Duration: 1.5490000247955327
+    m_Duration: 1.5240000486373904
     m_TimeScale: 1
     m_ParentTrack: {fileID: 4114571940419473979}
     m_EaseInDuration: 0
