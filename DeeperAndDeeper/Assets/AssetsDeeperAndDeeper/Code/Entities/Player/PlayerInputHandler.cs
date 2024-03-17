@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class PlayerInputHandler : MonoBehaviour
 {
     Vector2 turn = Vector2.zero;
     [SerializeField] float speed;
@@ -10,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     float xRot = 0;
     [SerializeField] float rotationSpeed = 0;
     private Vector3 movement;
+    public bool hasKey = false;
 
     private void Start()
     {
@@ -59,7 +58,6 @@ public class PlayerInput : MonoBehaviour
 
         if (gm.GameState == GameManager.State.LOOKING_OBJECT && Input.GetKeyDown(KeyCode.Escape))
         {
-            gm.ChangeState(GameManager.State.IN_GAME1);
             ISelection.lerpTime = 0;
             ISelection.selectedObjet.OnUnselect();
         }
