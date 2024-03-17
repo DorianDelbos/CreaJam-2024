@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class SteeringWing : MonoBehaviour, ISelection
 {
     enum Difficulty
     {
-        HARD,
+        EASY,
         MEDIUM,
-        EASY
-        
+        HARD,
+
     }
     Vector3 rotationZ = Vector3.zero;
 
@@ -21,11 +18,6 @@ public class SteeringWing : MonoBehaviour, ISelection
     private bool isSelected = false;
     private Vector3 basePos;
     private Quaternion baseRot;
-    [SerializeField] RectTransform arrowImage;
-    [SerializeField] RectTransform indicatorImage;
-    [SerializeField] List<Image> images;
-    Difficulty difficulty = Difficulty.HARD;
-    int[] angleDifficulty = new int[3] { 15, 30, 45 };
     float offsetCamera = 0;
     public bool IsHover { get => isHover; set => isHover = value; }
     public bool IsSelected { get => isSelected; set => isSelected = value; }
@@ -33,7 +25,15 @@ public class SteeringWing : MonoBehaviour, ISelection
     public Quaternion BaseRot { get => baseRot; set => baseRot = value; }
     public float OffsetCamera { get => offsetCamera; set => offsetCamera = value; }
 
-    bool isRotating = false;
+    [SerializeField] private RectTransform arrowImage;
+    [SerializeField] private RectTransform indicatorImage;
+    [SerializeField] private List<Sprite> images;
+    private Difficulty difficulty = Difficulty.HARD;
+    private int[] angleDifficulty = new int[3] { 15, 30, 45 };
+    private Coroutine rotationIndicatorRoutine;
+    private float indicatorRotationZ;
+    private float speed = 2f;
+
     public void OnClick()
     {
         InteriorVehicle vehicle = GameObject.FindFirstObjectByType<InteriorVehicle>();
@@ -70,13 +70,8 @@ public class SteeringWing : MonoBehaviour, ISelection
 
             #region SUB_GAME1
 
-            if (!isRotating) StartCoroutine(RotateIndicator());
-            if(Quaternion.Angle(arrowImage.rotation, indicatorImage.rotation) > angleDifficulty[(int)difficulty]) 
-            {
-            }
-            else
-            {
-            }
+            if (rotationIndicatorRoutine == null) 
+                StartCoroutine(RotateIndicator());
             #endregion
         }
         else
@@ -87,28 +82,31 @@ public class SteeringWing : MonoBehaviour, ISelection
 
     IEnumerator RotateIndicator()
     {
-        isRotating = true;
         float duringTime = Random.Range(0.5f, 1.5f);
         float currentTime = 0;
         bool isRight = Random.value < 0.5;
-        Vector3 currentRotIndicator = indicatorImage.transform.localEulerAngles;
-        if (currentRotIndicator.z > 180)
+
+        while (currentTime < duringTime /*&& !CheckArrowInIndicator()*/)
         {
-            currentRotIndicator.z = 180 - currentRotIndicator.z;
-        }
-        while (currentTime < duringTime)
-        {
-            currentTime += Time.deltaTime;
-            if (isRight)
-                currentRotIndicator -= new Vector3(0,0,0.5f);
-            else
-                currentRotIndicator += new Vector3(0, 0, 0.5f);
-            Debug.Log(currentRotIndicator.z);
-            currentRotIndicator.z = Mathf.Clamp(currentRotIndicator.z, -70, 70);
-            indicatorImage.transform.localEulerAngles = currentRotIndicator;
+            float dt = Time.deltaTime;
+            currentTime += dt;
+            indicatorRotationZ = Mathf.Clamp(indicatorRotationZ + dt * speed * (isRight ? -1 : 1), -70f, 70f);
+            indicatorImage.localEulerAngles = Vector3.forward * indicatorRotationZ;
+
             yield return null;
         }
-        isRotating = false;
+
+        if (CheckArrowInIndicator())
+        {
+            Lose();
+        }
+
+        rotationIndicatorRoutine = null;
+    }
+
+    private bool CheckArrowInIndicator()
+    {
+        return Quaternion.Angle(arrowImage.rotation, indicatorImage.rotation) > angleDifficulty[(int)difficulty];
     }
 
     void Lose()
@@ -119,7 +117,7 @@ public class SteeringWing : MonoBehaviour, ISelection
         {
             difficulty--;
         }
-        // indicatorImage.GetComponent<Image>(). = images[(int)difficulty]
-        // TODO : change source image difficulty
+
+        indicatorImage.GetComponent<Image>().sprite = images[(int)difficulty];
     }
 }
