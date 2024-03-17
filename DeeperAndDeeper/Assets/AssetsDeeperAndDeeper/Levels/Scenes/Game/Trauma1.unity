@@ -1297,6 +1297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   rotationSpeed: 0
+  hasKey: 0
 --- !u!114 &717453812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2596,7 +2597,7 @@ PrefabInstance:
     - target: {fileID: 131502157528137282, guid: ae1c84361c2d84047b88a614950e9053,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3249482727915372828, guid: ae1c84361c2d84047b88a614950e9053,
         type: 3}
