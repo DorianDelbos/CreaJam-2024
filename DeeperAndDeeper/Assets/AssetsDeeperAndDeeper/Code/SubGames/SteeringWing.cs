@@ -137,5 +137,6 @@ public class SteeringWing : MonoBehaviour, ISelection
     void Win()
     {
         SceneManager.LoadScene("Trauma2");
+        GameManager.instance.ChangeState(GameManager.State.IN_GAME2);
     }
 }

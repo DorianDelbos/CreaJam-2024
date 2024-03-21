@@ -2624,16 +2624,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 131502157528137282, guid: ae1c84361c2d84047b88a614950e9053,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3249482727915372828, guid: ae1c84361c2d84047b88a614950e9053,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5137011329470073301, guid: ae1c84361c2d84047b88a614950e9053,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2687,11 +2677,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 131502157528137282, guid: ae1c84361c2d84047b88a614950e9053,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1935900019}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae1c84361c2d84047b88a614950e9053, type: 3}
 --- !u!4 &1935900016 stripped
 Transform:
@@ -2705,23 +2691,11 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1935900015}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1935900018 stripped
+--- !u!114 &1935900019 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8449541427350252404, guid: ae1c84361c2d84047b88a614950e9053,
+  m_CorrespondingSourceObject: {fileID: 7827877013103279196, guid: ae1c84361c2d84047b88a614950e9053,
     type: 3}
   m_PrefabInstance: {fileID: 1935900015}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935900017}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8507ce08a8799634d8c8735ee63a5b68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1935900019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1935900017}
   m_Enabled: 1
@@ -2729,24 +2703,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Events:
-    m_Signals:
-    - {fileID: 11400000, guid: 6760176914b55d94da99f8fe9dae2332, type: 2}
-    m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1935900018}
-          m_TargetAssemblyTypeName: FadeSystem, Assembly-CSharp
-          m_MethodName: ToggleFade
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1965594075
 GameObject:
   m_ObjectHideFlags: 0
